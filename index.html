@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K-pop: Movimento Cultural</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="Stay.png">
+</head>
+<body>
+    <!-- Menu de acessibilidade -->
+    <div id="menu-acessibilidade">
+        <button id="botao-acessibilidade" aria-expanded="false">☰</button>
+        <div id="opcoes-acessibilidade">
+            <button id="aumentar-fonte">A+</button>
+            <button id="diminuir-fonte">A-</button>
+            <button id="alto-contraste">◐</button>
+        </div>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1>K-pop: Movimento Cultural</h1>
+            <p>Explorando o impacto global do K-pop através do Stray Kids</p>
+        </div>
+    </header>
+
+    <!-- Sobre o movimento -->
+    <section class="container my-5">
+        <h2>O K-pop como Movimento Cultural</h2>
+        <p>O K-pop é mais do que um gênero musical: é um fenômeno cultural que transcende barreiras linguísticas, geográficas e sociais. 
+        Surgido na Coreia do Sul na década de 1990, o estilo mistura música pop, hip-hop, R&B, e elementos visuais e performáticos marcantes, 
+        influenciando moda, dança, marketing e até diplomacia cultural.</p>
+    </section>
+
+    <!-- Destaque Stray Kids -->
+    <section class="container my-5 destaque-flex">
+        <div class="texto-destaque">
+            <h2>Stray Kids no Cenário Cultural</h2>
+            <p>O Stray Kids representa a nova geração do K-pop, com mensagens autênticas, produção própria e letras que abordam identidade, 
+            juventude e resiliência. Eles mostram como o K-pop se reinventa e dialoga com realidades diversas ao redor do mundo.</p>
+        </div>
+        <div class="imagem-destaque">
+            <img src="img/Stray.jpeg" alt="Stray Kids" class="img-circular">
+        </div>
+    </section>
+
+    <!-- Membros -->
+    <section class="container my-5">
+        <h2>Membros</h2>
+        <div class="membros-grid">
+            <div>
+                <img src="img/bachan.jpg" alt="Bang Chan">
+                <p>Bang Chan</p>
+            </div>
+            <div>
+                <img src="img/lenou.jpg" alt="Lee Know">
+                <p>Lee Know</p>
+            </div>
+            <div>
+                <img src="img/chanbin.png" alt="Changbin">
+                <p>Changbin</p>
+            </div>
+            <div>
+                <img src="img/Hiujin.png" alt="Hyunjin">
+                <p>Hyunjin</p>
+            </div>
+            <div>
+                <img src="img/Han.jpeg" alt="Han">
+                <p>Han</p>
+            </div>
+            <div>
+                <img src="img/Felix.jpeg" alt="Felix">
+                <p>Felix</p>
+            </div>
+            <div>
+                <img src="img/Seumin.jpg" alt="Seungmin">
+                <p>Seungmin</p>
+            </div>
+            <div>
+                <img src="img/Iene.png" alt="I.N">
+                <p>I.N</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria -->
+    <section class="container my-5">
+        <h2>Galeria Cultural</h2>
+        <div class="galeria-grid">
+            <img src="img/Show1.jpg" alt="Show 1">
+            <img src="img/Show2.jpeg" alt="Show 2">
+            <img src="img/Show3.png" alt="Evento 3">
+            <img src="img/Show4.jpeg" alt="Evento 4">
+        </div>
+    </section>
+
+    <!-- Lista de músicas -->
+    <section class="container my-5">
+        <h2>Obras e Músicas de Destaque</h2>
+        <div id="playlist">
+            <div class="list-group-item">
+                <div class="list-info">
+                    <img src="img/Cartie.webp" alt="Cover" class="cover-thumb">
+                    <div>
+                        <strong>MANIAC</strong>
+                        <span class="small">Stray Kids</span>
+                    </div>
+                </div>
+                <audio controls preload="none">
+                    <source src="audio/Stray Kids _MANIAC.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o player de áudio.
+                </audio>
+            </div>
+            <div class="list-group-item">
+                <div class="list-info">
+                    <img src="https://via.placeholder.com/64?text=Cover" alt="Cover" class="cover-thumb">
+                    <div>
+                        <strong>Back Door</strong>
+                        <span class="small">Stray Kids</span>
+                    </div>
+                </div>
+                <audio controls preload="none">
+                    <source src="musics/back_door.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o player de áudio.
+                </audio>
+            </div>
+            <div class="list-group-item">
+                <div class="list-info">
+                    <img src="https://via.placeholder.com/64?text=Cover" alt="Cover" class="cover-thumb">
+                    <div>
+                        <strong>Thunderous</strong>
+                        <span class="small">Stray Kids</span>
+                    </div>
+                </div>
+                <audio controls preload="none">
+                    <source src="musics/thunderous.mp3" type="audio/mpeg">
+                    Seu navegador não suporta o player de áudio.
+                </audio>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Conteúdo sob licença Creative Commons CC BY-SA</p>
+    </footer>
+
+    <!-- Script acessibilidade + playlist -->
+    <script src="script.js"></script>
+    <script>
+        // Garantir que só uma música toque de cada vez
+        document.addEventListener('DOMContentLoaded', () => {
+            const audios = document.querySelectorAll('#playlist audio');
+            audios.forEach(a => {
+                a.addEventListener('play', () => {
+                    audios.forEach(b => {
+                        if (b !== a) b.pause();
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

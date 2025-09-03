@@ -1,0 +1,110 @@
+/* style.css - mantém paleta escura/vermelho e adiciona alto contraste (+ animações) */
+
+:root{
+  --skz-red: #ff2d2d;
+  --skz-black: #0b0b0b;
+  --skz-white: #ffffff;
+  --skz-gray: #121212;
+  --glass: rgba(255,255,255,0.03);
+}
+
+/* reset mínimo */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+
+/* base */
+body{
+  font-family: 'Montserrat', Arial, sans-serif;
+  background: linear-gradient(180deg,var(--skz-black) 0%, var(--skz-gray) 100%);
+  color:var(--skz-white);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:60px;
+  transition: background .25s ease, color .25s ease;
+}
+
+.container{width:92%;max-width:1100px;margin:0 auto;padding:20px 0}
+.my-5{margin:48px 0}
+.text-center{text-align:center}
+.small{color:#cfcfcf;font-size:.95rem}
+
+/* header */
+header{background:var(--skz-black);border-bottom:4px solid var(--skz-red);padding:28px 0;text-align:center}
+header h1{font-family:'Lato',sans-serif;color:var(--skz-red);font-size:1.9rem;letter-spacing:.06em}
+header p{color:#e6d9d9;margin-top:6px}
+
+/* destaque com imagem circular */
+.destaque-flex{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+.texto-destaque{flex:1 1 60%}
+.imagem-destaque{flex:1 1 35%;display:flex;justify-content:center}
+.img-circular{
+  width:250px;height:250px;border-radius:50%;
+  object-fit:cover;border:6px solid rgba(255,255,255,0.06);
+  box-shadow:0 8px 30px rgba(0,0,0,0.6);
+  transition: transform .35s ease;
+}
+.imagem-destaque .img-circular:hover{transform: translateY(-6px) scale(1.2)}
+
+/* membros grid */
+.membros-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;align-items:start}
+.membros-grid div{background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(0,0,0,0.04));border:1px solid rgba(255,255,255,0.03);border-radius:10px;padding:10px;text-align:center;transition:transform .22s ease,box-shadow .22s ease}
+.membros-grid div:hover{transform:translateY(-30px);box-shadow:0 10px 30px rgba(0,0,0,0.45)}
+.membros-grid img{width:100%;height:150px;object-fit:cover;border-radius:8px;background:#222}
+.membros-grid p{margin-top:8px;color:#fff;font-weight:600}
+
+/* galeria */
+.galeria-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.galeria-grid img{width:100%;height:140px;object-fit:cover;border-radius:8px;background:#222;transition:transform .25s}
+.galeria-grid img:hover{transform:translateY(-6px)}
+
+/* playlist/lista (sem player) */
+#playlist{margin-top:8px;display:flex;flex-direction:column;gap:10px}
+.list-group-item{display:flex;justify-content:space-between;align-items:center;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));border:1px solid rgba(255,255,255,0.03)}
+.cover-thumb{width:64px;height:64px;object-fit:cover;border-radius:8px;margin-right:12px}
+.list-info{display:flex;align-items:center;gap:12px}
+.list-info strong{display:block;color:#fff}
+.list-info .small{color:#cfcfcf;font-size:.9rem}
+
+/* botão de acessibilidade */
+#menu-acessibilidade{position:fixed;top:18px;right:18px;z-index:1200;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+#botao-acessibilidade{width:48px;height:48px;border-radius:50%;border:none;background:var(--skz-red);color:var(--skz-white);cursor:pointer;display:inline-grid;place-items:center;font-weight:700;transition:transform .22s ease,box-shadow .18s}
+#botao-acessibilidade{transform:rotate(-90deg);box-shadow:0 6px 20px rgba(0,0,0,0.45)}
+
+/* quando aberto (aria-expanded="true") => botão em pé e mostra opções (o + selector funciona porque o botao vem imediatamente antes do div) */
+#botao-acessibilidade[aria-expanded="true"]{transform:rotate(0deg);box-shadow:0 10px 28px rgba(0,0,0,0.6)}
+#opcoes-acessibilidade{display:none;flex-direction:column;gap:8px;margin-top:4px;align-items:flex-end}
+#botao-acessibilidade[aria-expanded="true"] + #opcoes-acessibilidade{display:flex}
+
+/* botões de opção */
+#opcoes-acessibilidade button{background:transparent;border:1px solid rgba(255,255,255,0.12);color:var(--skz-white);padding:8px 10px;border-radius:8px;cursor:pointer;backdrop-filter:blur(6px)}
+#opcoes-acessibilidade button:hover{background:rgba(255,255,255,0.03);border-color:rgba(255,255,255,0.2)}
+
+/* botão "Leia mais" */
+.btn-toggle{margin-top:12px;padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:var(--skz-white);cursor:pointer}
+.btn-toggle:hover{background:rgba(255,255,255,0.03)}
+
+/* alto contraste (modo claro com texto preto) - aplica sobreposições para garantir que texto fique preto */
+body.alto-contraste{
+  background:#ffffff;
+  color:#000000;
+}
+body.alto-contraste header{ background:#000000; color:#ffffff; }
+body.alto-contraste header h1{ color: var(--skz-red); } /* mantém destaque do vermelho no título */
+body.alto-contraste h2, body.alto-contraste p, body.alto-contraste li, body.alto-contraste .small, body.alto-contraste .list-info strong, body.alto-contraste .membros-grid p, body.alto-contraste footer{ color:#000 !important; }
+body.alto-contraste #opcoes-acessibilidade button, body.alto-contraste #botao-acessibilidade{ background:#000; color:#fff; border:1px solid #ff2d2d }
+body.alto-contraste .list-group-item{ background:#fff; border:1px solid rgba(0,0,0,0.08); color:#000; }
+body.alto-contraste .membros-grid div{ background:#fff; border:1px solid rgba(0,0,0,0.08) }
+body.alto-contraste .galeria-grid img, body.alto-contraste .membros-grid img{ background:#f5f5f5 }
+
+/* footer */
+footer{margin-top:30px;padding:18px 0;background:linear-gradient(180deg, rgba(0,0,0,0.18), transparent);color:#ddd;text-align:center;font-size:.95rem}
+
+/* responsividade */
+@media (max-width:768px){
+  .destaque-flex{flex-direction:column-reverse}
+  .imagem-destaque{justify-content:flex-start}
+  .img-circular{width:200px;height:200px}
+  header h1{font-size:1.4rem}
+  .membros-grid img{height:120px}
+  .galeria-grid img{height:120px}
+  #menu-acessibilidade{top:12px;right:12px}
+}
